@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
 
-const Signup = React.createClass({
+
+var Signup = React.createClass({
 
   getInitialState : function() {
       return {
@@ -59,14 +61,23 @@ const Signup = React.createClass({
 
         <button onClick={this.handleSubmit}>Submit</button>
 
-
+        <p>Counter: {this.props.counter}</p>
       </div>
     )
   }
 
-
-
 });
 
+
+const mapStateToProps = (state) => {
+  return {
+    counter : state.counter
+  }
+}
+
+Signup = connect(
+  mapStateToProps,
+  null
+)(Signup);
 
 module.exports = Signup;
